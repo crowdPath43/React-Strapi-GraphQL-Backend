@@ -1,0 +1,39 @@
+{
+  "connection": "default",
+  "collectionName": "plans",
+  "info": {
+    "name": "Plan"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "mostpopular": {
+      "type": "boolean"
+    },
+    "speicialdeal": {
+      "type": "integer"
+    },
+    "save": {
+      "type": "decimal",
+      "required": true
+    },
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "months": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

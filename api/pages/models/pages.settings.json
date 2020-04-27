@@ -1,0 +1,36 @@
+{
+  "connection": "default",
+  "collectionName": "pages",
+  "info": {
+    "name": "pages"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "datetry": {
+      "type": "datetime",
+      "required": true
+    },
+    "URL": {
+      "type": "text",
+      "required": true
+    },
+    "status": {
+      "type": "biginteger",
+      "required": true
+    },
+    "incache": {
+      "type": "string"
+    },
+    "timeduration": {
+      "type": "decimal",
+      "required": true
+    },
+    "uptrackuser": {
+      "via": "pages",
+      "model": "uptrackusers"
+    }
+  }
+}

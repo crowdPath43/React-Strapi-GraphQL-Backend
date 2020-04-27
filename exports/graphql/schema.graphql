@@ -1,0 +1,607 @@
+type Category {
+  name: String!
+  tarticles(sort: String, limit: Int, start: Int, where: JSON): [Tarticle]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input CategoryInput {
+  name: String!
+  tarticles: [ID]
+}
+
+input createCategoryInput {
+  data: CategoryInput
+}
+
+type createCategoryPayload {
+  category: Category
+}
+
+input createPageInput {
+  data: PageInput
+}
+
+type createPagePayload {
+  page: Pages
+}
+
+input createPlanInput {
+  data: PlanInput
+}
+
+type createPlanPayload {
+  plan: Plan
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createSitemapInput {
+  data: SitemapInput
+}
+
+type createSitemapPayload {
+  sitemap: Sitemap
+}
+
+input createTarticleInput {
+  data: TarticleInput
+}
+
+type createTarticlePayload {
+  tarticle: Tarticle
+}
+
+input createUptrackuserInput {
+  data: UptrackuserInput
+}
+
+type createUptrackuserPayload {
+  uptrackuser: Uptrackusers
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input deleteCategoryInput {
+  where: InputID
+}
+
+type deleteCategoryPayload {
+  category: Category
+}
+
+input deletePageInput {
+  where: InputID
+}
+
+type deletePagePayload {
+  page: Pages
+}
+
+input deletePlanInput {
+  where: InputID
+}
+
+type deletePlanPayload {
+  plan: Plan
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteSitemapInput {
+  where: InputID
+}
+
+type deleteSitemapPayload {
+  sitemap: Sitemap
+}
+
+input deleteTarticleInput {
+  where: InputID
+}
+
+type deleteTarticlePayload {
+  tarticle: Tarticle
+}
+
+input deleteUptrackuserInput {
+  where: InputID
+}
+
+type deleteUptrackuserPayload {
+  uptrackuser: Uptrackusers
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input editCategoryInput {
+  name: String
+  tarticles: [ID]
+}
+
+input editFileInput {
+  name: String
+  hash: String
+  sha256: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input editPageInput {
+  datetry: DateTime
+  URL: String
+  status: Long
+  incache: String
+  timeduration: Float
+  uptrackuser: ID
+}
+
+input editPlanInput {
+  price: Float
+  description: String
+  mostpopular: Boolean
+  speicialdeal: Int
+  save: Float
+  title: String
+  months: Int
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editSitemapInput {
+  name: String
+  URL: String
+  uptrackuser: ID
+}
+
+input editTarticleInput {
+  title: String
+  content: String
+  image: ID
+  published_at: DateTime
+  category: ID
+}
+
+input editUptrackuserInput {
+  name: String
+  email: String
+  password: String
+  phonenumber: Long
+  confirmed: Boolean
+  plan: ID
+  sitemaps: [ID]
+  pages: [ID]
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  plan: ID
+}
+
+input FileInput {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Pages | createPagePayload | updatePagePayload | deletePagePayload | Plan | createPlanPayload | updatePlanPayload | deletePlanPayload | Sitemap | createSitemapPayload | updateSitemapPayload | deleteSitemapPayload | Tarticle | createTarticlePayload | updateTarticlePayload | deleteTarticlePayload | Uptrackusers | createUptrackuserPayload | updateUptrackuserPayload | deleteUptrackuserPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+
+type Mutation {
+  createCategory(input: createCategoryInput): createCategoryPayload
+  updateCategory(input: updateCategoryInput): updateCategoryPayload
+  deleteCategory(input: deleteCategoryInput): deleteCategoryPayload
+  createPage(input: createPageInput): createPagePayload
+  updatePage(input: updatePageInput): updatePagePayload
+  deletePage(input: deletePageInput): deletePagePayload
+  createPlan(input: createPlanInput): createPlanPayload
+  updatePlan(input: updatePlanInput): updatePlanPayload
+  deletePlan(input: deletePlanInput): deletePlanPayload
+  createSitemap(input: createSitemapInput): createSitemapPayload
+  updateSitemap(input: updateSitemapInput): updateSitemapPayload
+  deleteSitemap(input: deleteSitemapInput): deleteSitemapPayload
+  createTarticle(input: createTarticleInput): createTarticlePayload
+  updateTarticle(input: updateTarticleInput): updateTarticlePayload
+  deleteTarticle(input: deleteTarticleInput): deleteTarticlePayload
+  createUptrackuser(input: createUptrackuserInput): createUptrackuserPayload
+  updateUptrackuser(input: updateUptrackuserInput): updateUptrackuserPayload
+  deleteUptrackuser(input: deleteUptrackuserInput): deleteUptrackuserPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UserInput!): UsersPermissionsLoginPayload!
+}
+
+input PageInput {
+  datetry: DateTime!
+  URL: String!
+  status: Long!
+  incache: String
+  timeduration: Float!
+  uptrackuser: ID
+}
+
+type Pages {
+  datetry: DateTime!
+  URL: String!
+  status: Long!
+  incache: String
+  timeduration: Float!
+  uptrackuser: Uptrackusers
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Plan {
+  price: Float!
+  description: String!
+  mostpopular: Boolean
+  speicialdeal: Int
+  save: Float!
+  title: String!
+  months: Int!
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input PlanInput {
+  price: Float!
+  description: String!
+  mostpopular: Boolean
+  speicialdeal: Int
+  save: Float!
+  title: String!
+  months: Int!
+}
+
+type Query {
+  category(id: ID!): Category
+  categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
+  page(id: ID!): Pages
+  pages(sort: String, limit: Int, start: Int, where: JSON): [Pages]
+  plan(id: ID!): Plan
+  plans(sort: String, limit: Int, start: Int, where: JSON): [Plan]
+  sitemap(id: ID!): Sitemap
+  sitemaps(sort: String, limit: Int, start: Int, where: JSON): [Sitemap]
+  tarticle(id: ID!): Tarticle
+  tarticles(sort: String, limit: Int, start: Int, where: JSON): [Tarticle]
+  uptrackuser(id: ID!): Uptrackusers
+  uptrackusers(sort: String, limit: Int, start: Int, where: JSON): [Uptrackusers]
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+type Sitemap {
+  name: String
+  URL: String
+  uptrackuser: Uptrackusers
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input SitemapInput {
+  name: String
+  URL: String
+  uptrackuser: ID
+}
+
+type Tarticle {
+  title: String!
+  content: String!
+  image: UploadFile
+  published_at: DateTime!
+  category: Category
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input TarticleInput {
+  title: String!
+  content: String!
+  image: ID
+  published_at: DateTime!
+  category: ID
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+input updateCategoryInput {
+  where: InputID
+  data: editCategoryInput
+}
+
+type updateCategoryPayload {
+  category: Category
+}
+
+input updatePageInput {
+  where: InputID
+  data: editPageInput
+}
+
+type updatePagePayload {
+  page: Pages
+}
+
+input updatePlanInput {
+  where: InputID
+  data: editPlanInput
+}
+
+type updatePlanPayload {
+  plan: Plan
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateSitemapInput {
+  where: InputID
+  data: editSitemapInput
+}
+
+type updateSitemapPayload {
+  sitemap: Sitemap
+}
+
+input updateTarticleInput {
+  where: InputID
+  data: editTarticleInput
+}
+
+type updateTarticlePayload {
+  tarticle: Tarticle
+}
+
+input updateUptrackuserInput {
+  where: InputID
+  data: editUptrackuserInput
+}
+
+type updateUptrackuserPayload {
+  uptrackuser: Uptrackusers
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input UptrackuserInput {
+  name: String!
+  email: String!
+  password: String!
+  phonenumber: Long!
+  confirmed: Boolean!
+  plan: ID
+  sitemaps: [ID]
+  pages: [ID]
+}
+
+type Uptrackusers {
+  name: String!
+  email: String!
+  password: String!
+  phonenumber: Long!
+  confirmed: Boolean!
+  plan: Plan
+  sitemaps(sort: String, limit: Int, start: Int, where: JSON): [Sitemap]
+  pages(sort: String, limit: Int, start: Int, where: JSON): [Pages]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  plan: ID
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String!
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+  id: ID!
+}
+
+type UsersPermissionsRole {
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  id: ID!
+}
+
+type UsersPermissionsUser {
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  plan: Plan
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}

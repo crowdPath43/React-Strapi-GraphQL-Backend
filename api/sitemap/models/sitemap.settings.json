@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "sitemaps",
+  "info": {
+    "name": "sitemap"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "URL": {
+      "type": "richtext"
+    },
+    "uptrackuser": {
+      "via": "sitemaps",
+      "model": "uptrackusers"
+    }
+  }
+}

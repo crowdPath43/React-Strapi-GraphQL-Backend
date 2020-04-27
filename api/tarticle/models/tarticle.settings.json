@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "tarticles",
+  "info": {
+    "name": "tarticle"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": true
+    },
+    "published_at": {
+      "type": "datetime",
+      "required": true
+    },
+    "category": {
+      "model": "category",
+      "via": "tarticles"
+    }
+  }
+}

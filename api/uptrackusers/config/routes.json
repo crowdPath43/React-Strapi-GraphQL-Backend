@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/uptrackusers",
+      "handler": "uptrackusers.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/uptrackusers/count",
+      "handler": "uptrackusers.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/uptrackusers/:id",
+      "handler": "uptrackusers.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/uptrackusers",
+      "handler": "uptrackusers.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/uptrackusers/:id",
+      "handler": "uptrackusers.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/uptrackusers/:id",
+      "handler": "uptrackusers.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

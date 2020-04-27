@@ -1,0 +1,44 @@
+{
+  "connection": "default",
+  "collectionName": "uptrackusers",
+  "info": {
+    "name": "uptrackusers"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "password": {
+      "type": "password",
+      "required": true
+    },
+    "phonenumber": {
+      "type": "biginteger",
+      "required": true
+    },
+    "confirmed": {
+      "type": "boolean",
+      "required": true
+    },
+    "plan": {
+      "model": "plan"
+    },
+    "sitemaps": {
+      "collection": "sitemap",
+      "via": "uptrackuser"
+    },
+    "pages": {
+      "collection": "pages",
+      "via": "uptrackuser"
+    }
+  }
+}
